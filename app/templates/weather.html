@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+    weather
+{% endblock %}
+
+{% block page_content %}
+    <div class="row align-items-start">
+        <form name="weather" id="weather-form" method="POST">
+                {{ wtf.quick_form(form) }}
+        </form>
+    </div>
+  
+{% endblock %}
+

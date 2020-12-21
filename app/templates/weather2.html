@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+    weather
+{% endblock %}
+
+{% block page_content %}  
+    <div class="text-center">
+        <img src = "https://i.pinimg.com/564x/77/0b/80/770b805d5c99c7931366c2e84e88f251.jpg" width="124">
+
+        <h1>{{var_weather['name']}}, {{ var_weather['sys']['country'] }}</h1>
+        <h1>{{var_weather['weather'][0]['description']}}</h1>
+        <h1>{{var_weather['main']['temp']}}°C</h1>
+        <h2><a target="_blank" href="http://maps.google.com/?q={{var_weather['name']}}, {{ var_weather['sys']['country'] }}">Ir a la ubicacion</a></h2>
+    </div>
+  
+{% endblock %}
