@@ -9,6 +9,8 @@ wtforms = "*"
 email-validator = "*"
 flask-wtf = "*"
 flask-sqlalchemy = "*"
+flask-bootstrap = "*"
+requests = "*"
 
 [dev-packages]
 
