@@ -5,3 +5,24 @@ Esta app esta enfocada a mostrarte el tiempo de cualquier lugar del mundo con so
 Ejemplo:
         Caracas, Ve
         Merida, Mx
+
+
+# Activar entorno y instalar modulos 
+
+Primer se activa el entorno virtual
+
+        pipenv shell
+
+luego instalas los modulos integrados en pipfile
+
+        pipenv install --ignore-pipfile
+
+Y para arrancar el programa ejecuta.
+        
+        python app.py
+
+# Ejecutar programa sin entorno
+
+Ejecuta el siguiente comando
+
+        pipenv run python app.py
