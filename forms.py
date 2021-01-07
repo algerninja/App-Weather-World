@@ -39,7 +39,7 @@ class Login_Form(Form):
     password = PasswordField('password', [
         validators.Required(message = 'password is required')])
 
-    enviar = SubmitField('Log in')
+    submit = SubmitField('Log in')
 
 
 class Search_Form(Form):

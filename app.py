@@ -62,19 +62,19 @@ def login():
     login_form = forms.Login_Form(request.form)
 
     if request.method == "POST" and login_form.validate():
-        username = login_form.usuario.data
-        password = login_form.clave.data
+        email = login_form.email.data
+        password = login_form.password.data
 
-        user = User.query.filter_by(username = username).first()
+        user = User.query.filter_by(email = email).first()
 
-        if user is not None and user.verifica_clave(password):
-            success_message = f'Wellcome {username}'
+        if user is not None and user.verify_password(password):
+            success_message = f'Wellcome {user.username}'
             flash(success_message)
         else:
             success_message = 'Invalid username or password'
             flash(success_message)
 
-        session['username'] = login_form.username.data
+        session['username'] = user.username
 
     return render_template('login.html', form = login_form)
 
@@ -89,7 +89,12 @@ def signup():
         print(signup_form.email.data)
         print(signup_form.password.data)
 
-        u = User(username = signup_form.username.data, firstname = signup_form.firstname.data)
+        u = User(
+            username = signup_form.username.data,
+            firstname = signup_form.firstname.data,
+            lastname = signup_form.lastname.data,
+            email = signup_form.email.data,
+            password = signup_form.password.data)
 
         print(u)
         db.session.add(u)

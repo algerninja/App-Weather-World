@@ -6,5 +6,5 @@ class Config(object):
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.abspath(os.getcwd()) +'/database/User.db'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres@localhost/app-weather-world'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
