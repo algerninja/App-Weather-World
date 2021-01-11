@@ -6,14 +6,13 @@ from flask_wtf import CSRFProtect
 import requests
 import forms
 
-from config import DevelopmentConfig
+from config import DevelopmentConfig, ProductionConfig
 from models import db, User
 
 app = Flask(__name__)
-app.config.from_object(DevelopmentConfig)
+app.config.from_object(ProductionConfig)
 Bootstrap(app)
 csrf = CSRFProtect()
-
 
 def weather_JSON(city):
     API_Key = '22b171bd64df6212a8a495bbf801e05a'
@@ -83,12 +82,6 @@ def login():
 def signup():
     signup_form = forms.SignUp_Form(request.form)
     if request.method == "POST" and signup_form.validate():
-        print(signup_form.username.data)
-        print(signup_form.firstname.data)
-        print(signup_form.lastname.data)
-        print(signup_form.email.data)
-        print(signup_form.password.data)
-
         u = User(
             username = signup_form.username.data,
             firstname = signup_form.firstname.data,
@@ -120,4 +113,4 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
 
-    app.run(port=5000,debug=True)
+    app.run()
